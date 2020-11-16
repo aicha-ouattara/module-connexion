@@ -8,6 +8,11 @@
 </head>
 
 <body>
+<header>
+        <nav>
+            <h1>Administration</h1>
+        </nav>
+    </header>
     <section>
         <table>
 
@@ -51,6 +56,9 @@
         </table>
 
     </section>
+    <footer>
+        <p>Copyright 2020 </p>
+    </footer>
 </body>
 
 </html>

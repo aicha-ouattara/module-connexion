@@ -18,6 +18,7 @@ if(isset($_SESSION["id"]))
 
         $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '".$_SESSION["id"]."'";
         $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+
     }
 
     if(isset($_POST['newnom']) AND !empty($_POST['newnom'])) 
@@ -34,6 +35,7 @@ if(isset($_SESSION["id"]))
         $sql = "UPDATE utilisateurs SET password = '$newpassword' WHERE id = '".$_SESSION["id"]."'";
         $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
     }
+
 
     $sql = "SELECT * FROM utilisateurs WHERE id = '".$_SESSION["id"]."'";  // Recovery User session ...
     $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
@@ -84,9 +86,9 @@ mysqli_close($bdd);
             </section>
         </article>
         <?php
-        if(isset($erreur))
+        if(isset($message))
         {
-            echo $erreur;
+            echo $message;
         }
         ?>
     </main>
