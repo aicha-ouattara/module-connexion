@@ -1,54 +1,6 @@
 <?php
-$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
-
-if(isset($_POST["submit"])) //If we press the submit button
-{
-    if(!empty($_POST["login"]) AND !empty($_POST["prenom"]) AND !empty($_POST["nom"]) AND !empty($_POST["password"]) AND !empty($_POST["password2"]))  //If every value are not empty
-    {
-        //Users variable information
-        $login = htmlspecialchars($_POST["login"]);
-        $prenom = htmlspecialchars($_POST["prenom"]);
-        $nom = htmlspecialchars($_POST["nom"]);
-        $password = sha1($_POST["password"]);
-        $password2 = sha1($_POST["password2"]);
-        //Variable for the login lenght
-        $loginlenght = strlen($login);
-
-      if($loginlenght <= 255)
-      {
-        if($password == $password2)
-        {
-          $sql=" INSERT INTO utilisateurs (login, prenom, nom, password) VALUES ('" .$login. "', '" .$prenom. "', '" .$nom. "', '" .$password. "');";
-  
-          if (!mysqli_query($bdd, $sql))
-              {
-              die('impossible d’ajouter cet enregistrement : ' .  mysqli_error ($bdd));
-              }
-              else
-              {
-              mysqli_close($bdd);
-              header('Location:connexion.php');
-              }
-  
-        }
-        else
-        {
-          $erreur = "Les mots de passe ne sont pas identique !";
-        }
-      }
-      else
-      {
-        $erreur = "Votre pseudo ne doit pas depasser 255 caracteres !";
-      }
-    }
-    else
-    {
-    $erreur = "Tous les champs ne sont pas remplis !";
-    }
-}
 
 ?>
-
 
 <!-- Debut page display -->
 <!DOCTYPE html>
