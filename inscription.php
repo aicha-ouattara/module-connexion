@@ -9,8 +9,8 @@ if(isset($_POST["submit"])) //If we press the submit button
         $login = htmlspecialchars($_POST["login"]);
         $prenom = htmlspecialchars($_POST["prenom"]);
         $nom = htmlspecialchars($_POST["nom"]);
-        $password = sha1($_POST["password"]);
-        $password2 = sha1($_POST["password2"]);
+        $password = htmlspecialchars($_POST["password"]);
+        $password2 = htmlspecialchars($_POST["password2"]);
         //Variable for the login lenght
         $loginlenght = strlen($login);
 
@@ -63,7 +63,7 @@ if(isset($_POST["submit"])) //If we press the submit button
 <body>
     <header>
         <nav>
-            <h2>Inscription</h2>
+            <h1>Inscription</h1>
         </nav>
     </header>
 

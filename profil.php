@@ -1,4 +1,46 @@
 <?php
+session_start();
+
+$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
+if(isset($_SESSION["id"]))
+{
+    if(isset($_POST['newlogin']) AND !empty($_POST['newlogin'])) 
+    {
+        $newlogin = htmlspecialchars($_POST["newlogin"]);
+
+        $sql = "UPDATE utilisateurs SET login = '$newlogin' WHERE id = '".$_SESSION["id"]."'";
+        $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+    }
+
+    if(isset($_POST['newprenom']) AND !empty($_POST['newprenom'])) 
+    {
+        $newprenom = htmlspecialchars($_POST["newprenom"]);
+
+        $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '".$_SESSION["id"]."'";
+        $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+    }
+
+    if(isset($_POST['newnom']) AND !empty($_POST['newnom'])) 
+    {
+        $newnom = htmlspecialchars($_POST["newnom"]);
+
+        $sql = "UPDATE utilisateurs SET nom = '$newnom' WHERE id = '".$_SESSION["id"]."'";
+        $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+    }
+    if(isset($_POST['newpassword']) AND !empty($_POST['newpassword'])) 
+    {
+        $newpassword = htmlspecialchars($_POST["newpassword"]);
+
+        $sql = "UPDATE utilisateurs SET password = '$newpassword' WHERE id = '".$_SESSION["id"]."'";
+        $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+    }
+
+    $sql = "SELECT * FROM utilisateurs WHERE id = '".$_SESSION["id"]."'";  // Recovery User session ...
+    $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+    $userinfo = mysqli_fetch_array($result);
+}
+
+mysqli_close($bdd);
 
 ?>
 
@@ -9,13 +51,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Profil</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <h2>Inscription</h2>
+        <h1> Bienvenue <?php echo $userinfo["login"] ?> ! </h1>
         </nav>
     </header>
 
@@ -23,23 +65,20 @@
         <article>
             <section>
                 <!--Debut form -->
-                <form method="post" action="">
+                <form method="post" action="profil.php">
                     <label for="login">login</label>
-                    <input type="text" name="login" id="login" placeholder="votre login">
+                    <input type="text" name="newlogin" id="login" placeholder="votre login"  value="<?php echo $userinfo["login"]?>">
 
                     <label for="prenom">prenom</label>
-                    <input type="text" name="prenom" id="prenom" placeholder="Votre prenom">
+                    <input type="text" name="newprenom" id="prenom" placeholder="Votre prenom"  value="<?php echo $userinfo["prenom"]?>">
 
                     <label for="nom">nom</label>
-                    <input type="text" name="nom" id="nom" placeholder="Votre nom">
+                    <input type="text" name="newnom" id="nom" placeholder="Votre nom"  value="<?php echo $userinfo["nom"]?>">
 
                     <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="Votre mot de passe">
+                    <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe">
 
-                    <label for="password2">Confirmation du mot de passe</label>
-                    <input type="password" name="password2" id="password2" placeholder="Confirmation">
-
-                    <input type="submit" name="submit" value="Je m'inscris">
+                    <input type="submit" name="submit" value="Modifier son profile">
                 </form>
                 <!--End form -->
             </section>

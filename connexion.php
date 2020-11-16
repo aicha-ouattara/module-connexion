@@ -21,8 +21,15 @@ if (isset($_POST["submit"]))
             $_SESSION["prenom"] = $userinfo["prenom"];
             $_SESSION["nom"] = $userinfo["nom"];
             $_SESSION["password"] = $userinfo["password"];
-           // header("Location: profil.php?id=".$_SESSION["id"]);
-
+           
+           if ($userinfo ['login'] == 'admin' AND $userinfo ['password'] == 'admin') 
+           {
+            header('location: admin.php');      
+           }
+          else
+           {
+            header("Location: profil.php?id=".$_SESSION["id"]);
+           }
         }
 
         else
@@ -34,7 +41,10 @@ if (isset($_POST["submit"]))
     {
         $erreur =" Tous les champs ne sont pas renseignés ! ";
     }
+
 }
+
+mysqli_close($bdd);
 ?>
 
 <!-- Debut page display -->
@@ -50,7 +60,7 @@ if (isset($_POST["submit"]))
 <body>
     <header>
         <nav>
-            <h2>Connexion</h2>
+            <h1>Connexion</h1>
         </nav>
     </header>
 
@@ -60,12 +70,13 @@ if (isset($_POST["submit"]))
                 <!--Debut form -->
                 <form method="post" action="">
                     <label for="login">Login</label>
-                    <input type="text" name="login" id="login" placeholder="votre login">
+                    <input type="text" name="login" id="login" placeholder="votre login" required>
 
                     <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="Votre mot de passe">
+                    <input type="password" name="password" id="password" placeholder="Votre mot de passe " required>
 
                     <input type="submit" name="submit" value="Connexion">
+         
                 </form>
                 <!--End form -->
             </section>
