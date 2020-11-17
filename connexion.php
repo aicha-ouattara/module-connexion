@@ -1,6 +1,6 @@
 <?php
-session_start();
-$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
+session_start(); //Session connexion
+$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Database connexion ...
 
 if (isset($_POST["submit"]))
 {
@@ -9,7 +9,7 @@ if (isset($_POST["submit"]))
 
     if(!empty($_POST["login"]) AND !empty($_POST["password"]))
     {
-        $sql = "SELECT * FROM utilisateurs WHERE login = '".$login."' AND password = '". $password ."'"; //request
+        $sql = "SELECT * FROM utilisateurs WHERE login = '".$login."' AND password = '". $password ."'"; //Request for login and password from table
         $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd)); 
         $userexist = mysqli_num_rows($result);
 

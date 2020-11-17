@@ -18,6 +18,8 @@
 
             <thead>
                 <tr>
+
+                    <th>ID</th>
                     <th>LOGIN</th>
                     <th>NOM</th>
                     <th>PRENOM</th>
@@ -35,6 +37,7 @@
 
             while (($result = mysqli_fetch_assoc($query)) != null)
             {
+                $id = $result['id'];
                 $login = $result['login'];
                 $prenom = $result['prenom'];
                 $nom = $result['nom'];
@@ -42,6 +45,7 @@
 
                 echo '<tbody>
                 <tr>
+                <td>' .  $id . '</td>
                 <td>' . $login . '</td>
                 <td>' . $prenom . '</td>
                 <td>' . $nom . '</td>

@@ -5,14 +5,14 @@ if(isset($_POST["submit"])) //If we press the submit button
 {
     if(!empty($_POST["login"]) AND !empty($_POST["prenom"]) AND !empty($_POST["nom"]) AND !empty($_POST["password"]) AND !empty($_POST["password2"]))  //If every value are not empty
     {
-        //Users variable information
-        $login = htmlspecialchars($_POST["login"]);
+       
+        $login = htmlspecialchars($_POST["login"]);  //Users variable information
         $prenom = htmlspecialchars($_POST["prenom"]);
         $nom = htmlspecialchars($_POST["nom"]);
         $password = htmlspecialchars($_POST["password"]);
         $password2 = htmlspecialchars($_POST["password2"]);
-        //Variable for the login lenght
-        $loginlenght = strlen($login);
+        
+        $loginlenght = strlen($login); //Variable for the login lenght
 
       if($loginlenght <= 255)
       {
