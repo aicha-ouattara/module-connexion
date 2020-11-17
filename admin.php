@@ -1,3 +1,9 @@
+<?php
+session_start();
+$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,59 +16,64 @@
 <body>
 <header>
         <nav>
-            <h1>Administration</h1>
+            <?php
+            $sql = "SELECT * FROM utilisateurs WHERE id = '".$_SESSION["id"]."'";  // Recovery User session ...
+            $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
+            $userinfo = mysqli_fetch_array($result);
+            ?>
         </nav>
     </header>
+    <main>
     <section>
-        <table>
 
-            <thead>
-                <tr>
-
-                    <th>ID</th>
-                    <th>LOGIN</th>
-                    <th>NOM</th>
-                    <th>PRENOM</th>
-                    <th>PASSWORD</th>
-
-                <tr>
-            </thead>
-
-            <?php
-
-            $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
-            $request = "SELECT * FROM utilisateurs;";
-
-            $query = mysqli_query($bdd, $request);
-
-            while (($result = mysqli_fetch_assoc($query)) != null)
-            {
-                $id = $result['id'];
-                $login = $result['login'];
-                $prenom = $result['prenom'];
-                $nom = $result['nom'];
-                $password = $result['password'];
-
-                echo '<tbody>
-                <tr>
-                <td>' .  $id . '</td>
-                <td>' . $login . '</td>
-                <td>' . $prenom . '</td>
-                <td>' . $nom . '</td>
-                <td>' . $password . '</td>
-
-                </tr>
-                </tbody>';
-            }
-
-            ?>
-
-        </table>
-
+    <h1> Bienvenue <?php echo $userinfo["login"] ?> ! </h1>
     </section>
-    <footer>
-        <p>Copyright 2020 </p>
-    </footer>
+    </main>
+
+<footer>
+</footer>
+
 </body>
 
 </html>
+
+
+<?php
+if(isset($_SESSION["id"]) == "admin")
+{
+    $request = "SELECT * FROM utilisateurs;";
+    $query = mysqli_query($bdd, $request);
+
+    $i = 0;
+
+    echo "<table>";
+
+    while ($result = mysqli_fetch_assoc($query)) 
+    {
+        if ($i == 0) 
+        {
+            echo "<tr>";
+            foreach ($result as $key => $value) 
+            {
+                echo "<th>$key</th>";
+            }
+            echo "</tr>";
+
+            $i++;
+        }
+
+        echo "<tr>";
+        foreach ($result as $key => $value) 
+        {
+            echo "<td>$value</td>";
+        }
+        echo "</tr>";
+    }
+
+    echo "</table>";
+    mysqli_close($bdd);
+
+}
+
+?>
+
