@@ -49,48 +49,85 @@ mysqli_close($bdd);
 
 <!-- Debut page display -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../module-connexion/css/connexion.css" />
     <title>Connexion</title>
 </head>
 
 <body>
-    <header>
+<header>
         <nav>
-            <h1>Connexion</h1>
+            <a href="index.php">Accueil</a>
+            <a href="inscription.php">Inscription</a>
+            <a href="connexion.php">Connexion</a>
         </nav>
     </header>
 
     <main>
         <article>
+        <section class="monoke-container">
+           <img src="https://media.giphy.com/media/J341iqpI1Xrb4zee4O/giphy.gif" alt="monoke">
+           <img src="https://media.giphy.com/media/frTMQHQUaDI3VsClZK/giphy.gif" alt="monoke">
+           <img src="https://media.giphy.com/media/gEYosJxrPkiOG63we7/giphy.gif" alt="monoke">
+           </section>
+       
             <section>
                 <!--Debut form -->
                 <form method="post" action="">
+                    <fieldset>
+                    <div class="formflex">
+                    <div>
                     <label for="login">Login</label>
                     <input type="text" name="login" id="login" placeholder="votre login" required>
+                    </div>
 
+                    <div>
                     <label for="password">Mot de passe</label>
                     <input type="password" name="password" id="password" placeholder="Votre mot de passe " required>
-
+                    </div>
                     <input type="submit" name="submit" value="Connexion">
-         
+                    </div>
+                    </fieldset>
+                    <?php
+                    if(isset($erreur))
+                    {
+                    echo $erreur;
+                    }
+                    ?>
                 </form>
                 <!--End form -->
             </section>
         </article>
-        <?php
-        if(isset($erreur))
-        {
-            echo $erreur;
-        }
-        ?>
+       
+
+            <section class="ghiblistory">
+            <h1>CONNECTEZ-VOUS ET VENEZ DECOUVRIR LES DERNIERS MIYASAKI !</h1>
+            <p>
+            Le Studio Ghibli a été fondé en 1985 par les réalisateurs de films d'animation Isao Takahata et Hayao Miyazaki, et a 
+            produit vingt-deux longs métrages. La plupart des films du Studio Ghibli se sont classés numéro un au box-office au 
+            Japon l'année de leur sortie. SPIRITED AWAY, réalisé par Hayao Miyazaki et sorti en 2001, est le film le plus rentable 
+            de tous les temps au Japon, avec plus de 30 milliards de yens au box-office.
+            </p>
+            <article class="studio-container">
+            <img src="../module-connexion/images/baron.jpg" alt="baron">
+            <img src="../module-connexion/images/ghiblies.jpg" alt="baron">
+            <img src="../module-connexion/images/kazetachinu.jpg" alt="baron">
+
+            <img src="../module-connexion/images/marnie.jpg" alt="baron">
+            <img src="../module-connexion/images/mimi.jpg" alt="baron">
+            <img src="../module-connexion/images/mononoke.jpg" alt="baron">
+
+            <img src="../module-connexion/images/red-turtle.jpg" alt="baron">
+            <img src="../module-connexion/images/vielle.jpg" alt="baron">
+           </article>
+            </section>
     </main>
 
     <footer>
-        <p>Copyright 2020 </p>
     </footer>
 
 </body>

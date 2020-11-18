@@ -26,7 +26,6 @@ if(isset($_POST["submit"])) //If we press the submit button
               }
               else
               {
-              mysqli_close($bdd);
               header('Location:connexion.php');
               }
   
@@ -46,13 +45,14 @@ if(isset($_POST["submit"])) //If we press the submit button
     $erreur = "Tous les champs ne sont pas remplis !";
     }
 }
+mysqli_close($bdd);
 
 ?>
 
 
 <!-- Debut page display -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -67,76 +67,59 @@ if(isset($_POST["submit"])) //If we press the submit button
             <a href="index.php">Accueil</a>
             <a href="inscription.php">Inscription</a>
             <a href="connexion.php">Connexion</a>
-            <a href="profil.php">Profil</a>
         </nav>
     </header>
 
     <main>
             <section class="flex-container">
-            <!-- <img src="https://media.giphy.com/media/BOPrq7m5jYS1W/giphy.gif" alt="totorro" class="totoro"> -->
 
-                <section>
+            <img src="https://media.giphy.com/media/BOPrq7m5jYS1W/giphy.gif" alt="totorro" class="totoro">
+                
                 <!--Debut form -->
                 <form method="post" action="">
                   <fieldset>
                     <div class="formflex">
-                    <label for="login">Login</label>
-                    <input type="text" name="login" id="login" placeholder="votre login">
+                    <label for="login">LOGIN</label>
+                    <input type="text" name="login" id="login" placeholder="Votre login">
                     </div>
 
                     <div class="formflex">
-                    <label for="prenom">Prenom</label>
+                    <label for="prenom">PRENOM</label>
                     <input type="text" name="prenom" id="prenom" placeholder="Votre prenom">
                     </div>
 
                     <div class="formflex">
-                    <label for="nom">Nom</label>
+                    <label for="nom">NOM</label>
                     <input type="text" name="nom" id="nom" placeholder="Votre nom">
                     </div>
 
                     <div class="formflex">
-                    <label for="password">Mot de passe</label>
+                    <label for="password">MOT DE PASSE</label>
                     <input type="password" name="password" id="password" placeholder="Votre mot de passe">
                     </div>
                     
                     <div class="formflex">
-                    <label for="password2">Confirmation du mot de passe</label>
+                    <label for="password2">CONFIRMATION DU MOT DE PASSE</label>
                     <input type="password" name="password2" id="password2" placeholder="Confirmation">
                     </div>
 
                     <div class="formflex">
-                    <input type="submit" name="submit" value="Je m'inscris">
+                    <input type="submit" name="submit" value="JE M'INSCRIS">
                     </div>
+                    <div class="php">
+                        <h1>
+                    <?php
+                    if(isset($erreur))
+                     {
+                     echo $erreur;
+                     }
+                     ?>
+                     </h1>
+                     </div>
                    </fieldset>
                  </form>
                 <!--End form -->
             </section>
-            </section>
-        <?php
-        if(isset($erreur))
-        {
-            echo $erreur;
-        }
-        ?>
-        <section>
-                <h1>Studio Ghibli</h1>
-                <article class="studio-container">
-                <div class="image">
-                    <img src="../module-connexion/images/baron.jpg" alt="baron">
-                    <img src="../module-connexion/images/ghiblies.jpg" alt="baron">
-                    <img src="../module-connexion/images/kazetachinu.jpg" alt="baron">
-                </div>
-                <div class="image">
-                    <img src="../module-connexion/images/marnie.jpg" alt="baron">
-                    <img src="../module-connexion/images/mimi.jpg" alt="baron">
-                    <img src="../module-connexion/images/mononoke.jpg" alt="baron">
-                </div>
-                <div class="image">
-                    <img src="../module-connexion/images/red-turtle.jpg" alt="baron">
-                    <img src="../module-connexion/images/vielle.jpg" alt="baron">
-                    <img src="../module-connexion/images/yamada.jpg" alt="baron">
-                </div>
-        </section>
     </main>
 
     <footer>
@@ -148,3 +131,5 @@ if(isset($_POST["submit"])) //If we press the submit button
 </html>
 
 <!--End page display -->
+
+

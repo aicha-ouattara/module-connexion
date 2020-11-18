@@ -3,9 +3,10 @@ body
 {
  margin: auto;
  height: 100vh;
- background-image: url(../images/ciel.jpg);
+ background-image: url(../images/inscri.jpg);
  background-repeat: no-repeat;
  background-size: cover;
+
 }
 
 nav
@@ -34,32 +35,38 @@ a:hover
 {
 background-color: black;
 }
-
 /* Form */
+
 
 form
 {
-    width: 50%;
+    width: 70%;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
     font-weight: bold;
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+
 }
 .formflex
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     text-align: center;
     padding: 10px;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
     color: white;
+    
 
 }
 
 fieldset
 {
     border: none;
-    background-color: #DED7CB;
-    box-shadow: 1px 1px 2px black;   
+    border : 1px solid black;
 }
 
 
@@ -81,17 +88,17 @@ input::placeholder
     font-size: 10px;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
     font-weight: bold;
+
 }
 
   input[type='submit'] 
 {
-    background-color: white;
     border: none;
     padding: 10px;
     color: rgb(50, 160, 204);
-    box-shadow: 1px 1px 2px black; 
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-weight: bold; 
+    border : 1px solid black;
 
 }
 
@@ -106,21 +113,30 @@ label
     color: #C2B8A8;
 }
 
-/* Main-Section */
-.studio-container img
+/* Main */
+h1, h2
 {
-    max-width: 10%;
+    text-align: center;
 }
-.studio-container 
+.monoke-container
 {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    padding: 30px;
+}
+.monoke-container img
+{
+    max-width: 28%;
 }
 
-.flex-container
+.ghiblistory
 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;  
-    align-items: center;
+    
+    text-align: justify;
+    padding: 20px;
+}
+.ghiblistory h3, .ghiblistory h4
+{
+ text-align: center;
 }

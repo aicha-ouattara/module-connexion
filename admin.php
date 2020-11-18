@@ -5,7 +5,7 @@ $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connex
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -73,6 +73,10 @@ if(isset($_SESSION["id"]) == "admin")
     echo "</table>";
     mysqli_close($bdd);
 
+}
+else
+{
+    echo "vous n'êtes pas administrateur!";
 }
 
 ?>

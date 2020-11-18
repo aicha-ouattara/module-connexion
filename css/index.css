@@ -2,6 +2,7 @@
 body
 {
  margin: auto;
+ height: 100vh;
  background-image: url(../images/ciel.jpg);
  background-repeat: no-repeat;
  background-size: cover;
@@ -54,7 +55,7 @@ background-color: #DED7CB;
 
 .totoro
 {
-    max-width: 70%;
+    max-width: 65%;
 }
 .avion
 {
