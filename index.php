@@ -20,11 +20,11 @@
             <article class="gif-container">
                 <div></div>
                 <img src="http://jaipasfini.org/wp-content/uploads/2015/02/airporco.gif" alt="avion" class="avion">
-           </article>
+            </article>
             <article class="gif-container">
                 <img src="../module-connexion/images/ghibli.png" alt="totorro" class="totoro">
                 <div></div>
-           </article>
+            </article>
         </section>
     </main>
     <footer></footer>
