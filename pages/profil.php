@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
+
 if (isset($_SESSION["id"])) {
     if (isset($_POST['newlogin']) and !empty($_POST['newlogin'])) {
         $newlogin = htmlspecialchars($_POST["newlogin"]);
@@ -47,7 +47,7 @@ if (isset($_SESSION["id"])) {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../module-connexion/css/profil.css" />
+    <link rel="stylesheet" href="../css/profil.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
 </head>
@@ -55,7 +55,7 @@ if (isset($_SESSION["id"])) {
 <body>
     <header>
         <nav>
-            <a href="index.php">Accueil</a>
+            <a href="../index.php">Accueil</a>
             <a href="profil.php">Profil</a>
         </nav>
     </header>
@@ -103,9 +103,9 @@ if (isset($_SESSION["id"])) {
                     divulguant les plans du parc.
                 </p>
                 <section class="monoke-container">
-                    <img src="../module-connexion/images/ima1.jpeg" alt="monoke">
-                    <img src="../module-connexion/images/ima2.jpeg" alt="monoke">
-                    <img src="../module-connexion/images/ima3.jpeg" alt="monoke">
+                    <img src="../images/ima1.jpeg" alt="monoke">
+                    <img src="../images/ima2.jpeg" alt="monoke">
+                    <img src="../images/ima3.jpeg" alt="monoke">
                 </section>
             </section>
         </article>

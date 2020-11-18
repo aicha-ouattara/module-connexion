@@ -44,7 +44,7 @@ mysqli_close($bdd);
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../module-connexion/css/inscription.css" />
+    <link rel="stylesheet" href="../css/inscription.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
 </head>
@@ -52,9 +52,9 @@ mysqli_close($bdd);
 <body>
     <header>
         <nav>
-            <a href="index.php">Accueil</a>
-            <a href="../module-connexion/pages/inscription.php">Inscription</a>
-            <a href="../module-connexion/pages/connexion.php">Connexion</a>
+            <a href="../index.php">Accueil</a>
+            <a href="inscription.php">Inscription</a>
+            <a href="connexion.php">Connexion</a>
         </nav>
     </header>
 

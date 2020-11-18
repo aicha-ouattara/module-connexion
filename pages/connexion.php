@@ -20,9 +20,9 @@ if (isset($_POST["submit"])) {
             $_SESSION["password"] = $userinfo["password"];
 
             if ($userinfo['login'] == 'admin' and $userinfo['password'] == 'admin') {
-                header('location: admin.php');
+                header('location:admin.php');
             } else {
-                header("Location: profil.php?id=" . $_SESSION["id"]);
+                header("Location:profil.php?id=" . $_SESSION["id"]);
             }
         } else {
             $erreur = "Le login ou le mot de passe est incorrect.";
@@ -42,16 +42,16 @@ mysqli_close($bdd);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../module-connexion/css/connexion.css" />
+    <link rel="stylesheet" href="../css/connexion.css" />
     <title>Connexion</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="index.php">Accueil</a>
-            <a href="inscription.php">Inscription</a>
-            <a href="connexion.php">Connexion</a>
+            <a href="../index.php">Accueil</a>
+            <a href="inscription">Inscription</a>
+            <a href="connexion">Connexion</a>
         </nav>
     </header>
 
@@ -100,16 +100,16 @@ mysqli_close($bdd);
                 de tous les temps au Japon, avec plus de 30 milliards de yens au box-office.
             </p>
             <article class="studio-container">
-                <img src="../module-connexion/images/baron.jpg" alt="baron">
-                <img src="../module-connexion/images/ghiblies.jpg" alt="baron">
-                <img src="../module-connexion/images/kazetachinu.jpg" alt="baron">
+                <img src="../images/baron.jpg" alt="baron">
+                <img src="../images/ghiblies.jpg" alt="baron">
+                <img src="../images/kazetachinu.jpg" alt="baron">
 
-                <img src="../module-connexion/images/marnie.jpg" alt="baron">
-                <img src="../module-connexion/images/mimi.jpg" alt="baron">
-                <img src="../module-connexion/images/mononoke.jpg" alt="baron">
+                <img src="../images/marnie.jpg" alt="baron">
+                <img src="../images/mimi.jpg" alt="baron">
+                <img src="../images/mononoke.jpg" alt="baron">
 
-                <img src="../module-connexion/images/red-turtle.jpg" alt="baron">
-                <img src="../module-connexion/images/vielle.jpg" alt="baron">
+                <img src="../images/red-turtle.jpg" alt="baron">
+                <img src="../images/vielle.jpg" alt="baron">
             </article>
         </section>
     </main>
