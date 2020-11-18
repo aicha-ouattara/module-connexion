@@ -73,12 +73,11 @@ if(isset($_POST["submit"])) //If we press the submit button
 
     <main>
             <section class="flex-container">
-            <img src="https://media.giphy.com/media/BOPrq7m5jYS1W/giphy.gif" alt="totorro" class="totoro">
+            <!-- <img src="https://media.giphy.com/media/BOPrq7m5jYS1W/giphy.gif" alt="totorro" class="totoro"> -->
 
                 <section>
                 <!--Debut form -->
                 <form method="post" action="">
-                   
                   <fieldset>
                     <div class="formflex">
                     <label for="login">Login</label>
