@@ -19,7 +19,7 @@ $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connex
             <a href="../index.php">Accueil</a>
             <a href="inscription.php">Inscription</a>
             <a href="connexion.php">Connexion</a>
-            <a href="profil.php">Connexion</a>
+            <a href="profil.php">Profil</a>
         </nav>
         <?php
         $sql = "SELECT * FROM utilisateurs WHERE id = '" . $_SESSION["id"] . "'";  // Recovery User session ...

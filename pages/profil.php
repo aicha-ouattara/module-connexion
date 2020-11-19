@@ -3,11 +3,12 @@ session_start(); //Session connect
 $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
 
 if (isset($_SESSION["id"])) { 
-    if (isset($_POST['newlogin']) and !empty($_POST['newlogin'])) {
+    if (isset($_POST['newlogin']) and !empty($_POST['newlogin']) ) {
         $newlogin = htmlspecialchars($_POST["newlogin"]);
 
         $sql = "UPDATE utilisateurs SET login = '$newlogin' WHERE id = '" . $_SESSION["id"] . "'"; //Update login from the database with the new login
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
+        header('Location: ../index.php');
     }
 
     if (isset($_POST['newprenom']) and !empty($_POST['newprenom'])) {  //Update prenom from the database whith the new prenom
@@ -15,6 +16,7 @@ if (isset($_SESSION["id"])) {
 
         $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '" . $_SESSION["id"] . "'"; 
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
+        header('Location: ../index.php');
     }
 
     if (isset($_POST['newnom']) and !empty($_POST['newnom'])) { //Update nom from the database whith the new nom
@@ -22,12 +24,14 @@ if (isset($_SESSION["id"])) {
 
         $sql = "UPDATE utilisateurs SET nom = '$newnom' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
+        header('Location: ../index.php');
     }
     if (isset($_POST['newpassword']) and !empty($_POST['newpassword'])) {  //Update password from the database whith the new password
         $newpassword = htmlspecialchars($_POST["newpassword"]);
 
         $sql = "UPDATE utilisateurs SET password = '$newpassword' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
+        header('Location: ../index.php');
     }
 
     $sql = "SELECT * FROM utilisateurs WHERE id = '" . $_SESSION["id"] . "'";  // Recovery User session ...
@@ -64,7 +68,7 @@ if (isset($_SESSION["id"])) {
             <h2>Tu peux modifier ton profil ici avec les champs deja prérempli ...</h2>
             <section>
                 <!--Debut form -->
-                <form method="post" action="profil.php">
+                <form method="post" action="">
                     <fieldset>
                         <div class="formflex">
                             <div>
@@ -81,11 +85,12 @@ if (isset($_SESSION["id"])) {
                             </div>
                             <div>
                                 <label for="password">Mot de passe</label>
-                                <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe" value="<?php echo $userinfo["nom"]; ?>">
+                                <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe">
                             </div>
                             <input type="submit" name="submit" value="Modifier son profile">
                         </div>
                     </fieldset>
+
                 </form>
                 <!--End form -->
             </section>
