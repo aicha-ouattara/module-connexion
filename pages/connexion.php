@@ -50,8 +50,6 @@ mysqli_close($bdd);
     <header>
         <nav>
             <a href="../index.php">Accueil</a>
-            <a href="inscription">Inscription</a>
-            <a href="connexion">Connexion</a>
         </nav>
     </header>
 

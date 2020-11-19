@@ -62,7 +62,7 @@ if (isset($_SESSION["id"])) {
 
     <main>
         <article>
-            <h1> Bienvenue <?php echo $userinfo["login"] ?> ! </h1>
+            <h1> Bienvenue <span><?php echo $userinfo["login"]. ' ' ."!";?></span> </h1>
             <h2>Tu peux modifier ton profil ici avec les champs deja prérempli ...</h2>
             <section>
                 <!--Debut form -->
@@ -71,19 +71,19 @@ if (isset($_SESSION["id"])) {
                         <div class="formflex">
                             <div>
                                 <label for="login">login</label>
-                                <input type="text" name="newlogin" id="login" placeholder="votre login" value="<?php echo $userinfo["login"] ?>">
+                                <input type="text" name="newlogin" id="login" placeholder="votre login" value="<?php echo $userinfo["login"] ;?>">
                             </div>
                             <div>
                                 <label for="prenom">prenom</label>
-                                <input type="text" name="newprenom" id="prenom" placeholder="Votre prenom" value="<?php echo $userinfo["prenom"] ?>">
+                                <input type="text" name="newprenom" id="prenom" placeholder="Votre prenom" value="<?php echo $userinfo["prenom"] ;?>">
                             </div>
                             <div>
                                 <label for="nom">nom</label>
-                                <input type="text" name="newnom" id="nom" placeholder="Votre nom" value="<?php echo $userinfo["nom"] ?>">
+                                <input type="text" name="newnom" id="nom" placeholder="Votre nom" value="<?php echo $userinfo["nom"] ;?>">
                             </div>
                             <div>
                                 <label for="password">Mot de passe</label>
-                                <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe" value="<?php echo $userinfo["nom"] ?>">
+                                <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe" value="<?php echo $userinfo["nom"]; ?>">
                             </div>
                             <input type="submit" name="submit" value="Modifier son profile">
                         </div>

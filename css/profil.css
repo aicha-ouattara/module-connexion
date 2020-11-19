@@ -133,11 +133,18 @@ h1, h2
 
 .ghiblistory
 {
-    
+    color: rgb(214, 214, 214);
     text-align: justify;
     padding: 20px;
 }
 .ghiblistory h3, .ghiblistory h4
 {
  text-align: center;
+ color: white;
+ text-decoration: underline;
+}
+span
+{
+    color: rgb(136, 221, 255);
+    text-decoration: underline;
 }
