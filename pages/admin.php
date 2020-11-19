@@ -1,7 +1,6 @@
 <?php
 session_start(); // Session connexion ...
 $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
-
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +34,6 @@ $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connex
             <p>*Strictement confidentiel.</p>
         </section>
     </main>
-
-
 
     <?php
     if (isset($_SESSION["id"]) == "admin") {
@@ -72,7 +69,6 @@ $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connex
     }
 
     ?>
-
 
     <footer>
      <a href="../index.php">Retour à l'accueil</a>

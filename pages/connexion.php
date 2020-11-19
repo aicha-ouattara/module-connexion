@@ -3,10 +3,12 @@ session_start(); //Session connexion
 $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Database connexion ...
 
 if (isset($_POST["submit"])) {
+
     $login = htmlspecialchars($_POST["login"]);
     $password = htmlspecialchars($_POST["password"]);
 
     if (!empty($_POST["login"]) AND !empty($_POST["password"])) {
+        
         $sql = "SELECT * FROM utilisateurs WHERE login = '" . $login . "' AND password = '" . $password . "'"; //Request for login and password from table
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
          mysqli_num_rows($result);
