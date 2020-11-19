@@ -1,6 +1,6 @@
 <?php
 session_start(); //Session connexion
-$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Database connexion ...
+$bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Database connexion ...
 
 if (isset($_POST["submit"])) {
 

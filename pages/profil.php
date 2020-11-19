@@ -1,6 +1,6 @@
 <?php
 session_start(); //Session connect
-$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
+$bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion database...
 
 if (isset($_SESSION["id"])) { 
     if (isset($_POST['newlogin']) and !empty($_POST['newlogin']) ) {

@@ -1,5 +1,5 @@
 <?php
-$bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
+$bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion database...
 
 if (isset($_POST["submit"])) //If we press the submit button
 {
