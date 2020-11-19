@@ -65,7 +65,7 @@ if (isset($_SESSION["id"])) {
     <main>
         <article>
             <h1> Bienvenue <span><?php echo $userinfo["login"]. ' ' ."!";?></span> </h1>
-            <h2>Tu peux modifier ton profil ici avec les champs deja prérempli ...</h2>
+            <h2>Tu peux modifier ton profil ici avec les champs deja pré-remplie ...</h2>
             <section>
                 <!--Debut form -->
                 <form method="post" action="">
@@ -76,18 +76,18 @@ if (isset($_SESSION["id"])) {
                                 <input type="text" name="newlogin" id="login" placeholder="votre login" value="<?php echo $userinfo["login"] ;?>">
                             </div>
                             <div>
-                                <label for="prenom">prenom</label>
+                                <label for="prenom">Prenom</label>
                                 <input type="text" name="newprenom" id="prenom" placeholder="Votre prenom" value="<?php echo $userinfo["prenom"] ;?>">
                             </div>
                             <div>
-                                <label for="nom">nom</label>
+                                <label for="nom">Nom</label>
                                 <input type="text" name="newnom" id="nom" placeholder="Votre nom" value="<?php echo $userinfo["nom"] ;?>">
                             </div>
                             <div>
                                 <label for="password">Mot de passe</label>
                                 <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe">
                             </div>
-                            <input type="submit" name="submit" value="Modifier son profile">
+                            <input type="submit" name="submit" value="Modifie ton profil et retourne vers l'accueil">
                         </div>
                     </fieldset>
 

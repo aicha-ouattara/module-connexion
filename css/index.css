@@ -6,6 +6,8 @@ body
  background-image: url(../images/ciel.jpg);
  background-repeat: no-repeat;
  background-size: cover;
+ font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+
 }
 
 nav
@@ -14,7 +16,6 @@ display: flex;
 flex-direction: row;
 justify-content: flex-end;
 opacity: 0.8;
-font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 font-weight: bold;
 }
 
