@@ -80,11 +80,14 @@ h1, h2, p
 footer
 {
     text-align: center;
-    padding: 20px;
-    background-color: rgb(121, 202, 253);
-    width: 20%;
+    padding: 30px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
+}
+
+footer a
+{
+    background-color: rgb(121, 202, 253);
 }
