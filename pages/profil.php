@@ -1,36 +1,34 @@
 <?php
-session_start();
+session_start(); //Session connect
 $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
 
-if (isset($_SESSION["id"])) {
+if (isset($_SESSION["id"])) { 
     if (isset($_POST['newlogin']) and !empty($_POST['newlogin'])) {
         $newlogin = htmlspecialchars($_POST["newlogin"]);
 
-        $sql = "UPDATE utilisateurs SET login = '$newlogin' WHERE id = '" . $_SESSION["id"] . "'";
+        $sql = "UPDATE utilisateurs SET login = '$newlogin' WHERE id = '" . $_SESSION["id"] . "'"; //Update login from the database with the new login
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
     }
 
-    if (isset($_POST['newprenom']) and !empty($_POST['newprenom'])) {
+    if (isset($_POST['newprenom']) and !empty($_POST['newprenom'])) {  //Update prenom from the database whith the new prenom
         $newprenom = htmlspecialchars($_POST["newprenom"]);
 
-        $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '" . $_SESSION["id"] . "'";
+        $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '" . $_SESSION["id"] . "'"; 
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
     }
 
-    if (isset($_POST['newnom']) and !empty($_POST['newnom'])) {
+    if (isset($_POST['newnom']) and !empty($_POST['newnom'])) { //Update nom from the database whith the new nom
         $newnom = htmlspecialchars($_POST["newnom"]);
 
         $sql = "UPDATE utilisateurs SET nom = '$newnom' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
     }
-    if (isset($_POST['newpassword']) and !empty($_POST['newpassword'])) {
+    if (isset($_POST['newpassword']) and !empty($_POST['newpassword'])) {  //Update password from the database whith the new password
         $newpassword = htmlspecialchars($_POST["newpassword"]);
 
         $sql = "UPDATE utilisateurs SET password = '$newpassword' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
     }
-
-    $message = "Vous avez bien modifié votre profil !";
 
     $sql = "SELECT * FROM utilisateurs WHERE id = '" . $_SESSION["id"] . "'";  // Recovery User session ...
     $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));

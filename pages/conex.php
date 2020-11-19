@@ -6,36 +6,33 @@ if (isset($_POST["submit"])) {
     $login = htmlspecialchars($_POST["login"]);
     $password = htmlspecialchars($_POST["password"]);
 
-    if (!empty($_POST["login"]) AND !empty($_POST["password"])) {
-        $sql = "SELECT * FROM utilisateurs WHERE login = '" . $login . "' AND password = '" . $password . "'"; //Request for login and password from table
-        $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
-         mysqli_num_rows($result);
+    if (!empty($_POST["login"]) and !empty($_POST["password"])) {
+        if($_POST["login"] == "admin" AND $_POST["password"]=="admin")
+        {  header('location:admin.php');
 
-        if (mysqli_num_rows($result) == 1) {
-            $userinfo = mysqli_fetch_assoc($result); 
-
-            $_SESSION["id"] = $userinfo["id"];
-            $_SESSION["login"] = $userinfo["login"];
-            $_SESSION["prenom"] = $userinfo["prenom"];
-            $_SESSION["nom"] = $userinfo["nom"];
-            $_SESSION["password"] = $userinfo["password"];
-
-            if ($userinfo['login'] == 'admin' AND $userinfo['password'] == 'admin') // Verification if user is an admin or an user 
-            { 
-                header('location:admin.php');
-            } 
-            else 
-            {
+            $sql = "SELECT * FROM utilisateurs WHERE login = '" . $login . "' AND password = '" . $password . "'"; //Request for login and password from table
+            $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
+            $userexist = mysqli_num_rows($result);
+    
+            if ($userexist == 1) {
+                $userinfo = mysqli_fetch_array($result); // If users connected, we create a variable with his session
+                $_SESSION["id"] = $userinfo["id"];
+                $_SESSION["login"] = $userinfo["login"];
+                $_SESSION["prenom"] = $userinfo["prenom"];
+                $_SESSION["nom"] = $userinfo["nom"];
+                $_SESSION["password"] = $userinfo["password"];
                 header("Location:profil.php?id=" . $_SESSION["id"]);
-            }
-        } 
-        else 
+                
+        }
+        else
         {
+            $erreur = "Vous n'etes pas un admin";
+        }
+
+        } else {
             $erreur = "Le login ou le mot de passe est incorrect.";
         }
-    } 
-    else 
-    {
+    } else {
         $erreur = " Tous les champs ne sont pas renseignés ! ";
     }
 }

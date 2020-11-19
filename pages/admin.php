@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); // Session connexion ...
 $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connexion database...
 
 ?>
@@ -47,7 +47,7 @@ $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connex
 
         echo "<table>";
 
-        while ($result = mysqli_fetch_assoc($query)) {
+        while ($result = mysqli_fetch_assoc($query)) {  //Loop for the field of the table from database
             if ($i == 0) {
                 echo "<tr>";
                 foreach ($result as $key => $value) {
@@ -59,7 +59,7 @@ $bdd = mysqli_connect("localhost", "root", "root", "moduleconnexion"); // Connex
             }
 
             echo "<tr>";
-            foreach ($result as $key => $value) {
+            foreach ($result as $key => $value) { //Loop for the value of the table from database
                 echo "<td>$value</td>";
             }
             echo "</tr>";
