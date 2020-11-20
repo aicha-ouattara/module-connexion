@@ -71,7 +71,7 @@ $bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion 
     ?>
 
     <footer>
-     <a href="../index.php">Retour à l'accueil</a>
+     <a href="../index.php">Retour à l'accueilok</a>
     </footer>
 
 </body>
