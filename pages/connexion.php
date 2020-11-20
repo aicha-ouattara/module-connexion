@@ -59,7 +59,7 @@ mysqli_close($bdd);
 <body>
     <header>
         <nav>
-            <a href="../index.php">Accueilok</a>
+            <a href="../index.php">Accueil</a>
         </nav>
     </header>
 

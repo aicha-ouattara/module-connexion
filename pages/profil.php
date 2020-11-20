@@ -57,7 +57,7 @@ if (isset($_SESSION["id"])) {
 <body>
     <header>
         <nav>
-            <a href="../index.php">Accueilok</a>
+            <a href="../index.php">Accueil</a>
             <a href="profil.php">Profil</a>
         </nav>
     </header>
