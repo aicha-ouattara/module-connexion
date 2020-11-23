@@ -65,14 +65,14 @@ mysqli_close($bdd);
         <nav>
             <a href='../index.php'>Accueil</a>
             <?php if (isset($_SESSION['id'])) { ?>
-                <a href="pages/profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+                <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
             <?php
-            } else { ?><a href='pages/inscription.php'>Inscription</a><?php } ?>
+            } else { ?><a href='inscription.php'>Inscription</a><?php } ?>
 
             <?php if (isset($_SESSION['id'])) { ?>
-                <a href="pages/deconnexion.php">Deconnexion</a>
+                <a href="deconnexion.php">Deconnexion</a>
             <?php } else { ?>
-                <a href="pages/connexion.php">Connexion</a>
+                <a href="connexion.php">Connexion</a>
             <?php } ?>
         </nav>
     </header>
