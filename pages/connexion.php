@@ -7,14 +7,22 @@ if (isset($_POST["submit"])) {
     $login = htmlspecialchars($_POST["login"]);
     $password = htmlspecialchars($_POST["password"]);
 
-    if (!empty($_POST["login"]) AND !empty($_POST["password"])) {
-        
-        $sql = "SELECT * FROM utilisateurs WHERE login = '" . $login . "' AND password = '" . $password . "'"; //Request for login and password from table
+    if (!empty($_POST["login"]) and !empty($_POST["password"])) {
+
+        if ($_POST["login"] == "admin" and $_POST["password"] == "admin") {
+            $_SESSION["login"] = 'admin';
+            $_SESSION["prenom"] = 'admin';
+            $_SESSION["nom"] = 'admin';
+            $_SESSION["password"] = 'admin';
+            header('location:admin.php');
+        }
+
+        $sql = "SELECT * FROM utilisateurs WHERE login = '" . $login . "'"; //Request for login and password from table
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
-         mysqli_num_rows($result);
+        mysqli_num_rows($result);
 
         if (mysqli_num_rows($result) == 1) {
-            $userinfo = mysqli_fetch_assoc($result); 
+            $userinfo = mysqli_fetch_assoc($result);
 
             $_SESSION["id"] = $userinfo["id"];
             $_SESSION["login"] = $userinfo["login"];
@@ -22,22 +30,18 @@ if (isset($_POST["submit"])) {
             $_SESSION["nom"] = $userinfo["nom"];
             $_SESSION["password"] = $userinfo["password"];
 
-            if ($userinfo['login'] == 'admin' AND $userinfo['password'] == 'admin') // Verification if user is an admin or an user 
-            { 
-                header('location:admin.php');
-            } 
-            else 
-            {
+
+            $verify = password_verify($password, $userinfo['password']);
+
+
+            if ($verify) {
+                // Verification if user is an admin or an user                  
                 header("Location:profil.php?id=" . $_SESSION["id"]);
             }
-        } 
-        else 
-        {
+        } else {
             $erreur = "Le login ou le mot de passe est incorrect.";
         }
-    } 
-    else 
-    {
+    } else {
         $erreur = " Tous les champs ne sont pas renseignés ! ";
     }
 }
@@ -59,7 +63,17 @@ mysqli_close($bdd);
 <body>
     <header>
         <nav>
-            <a href="../index.php">Accueil</a>
+            <a href='../index.php'>Accueil</a>
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="pages/profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <?php
+            } else { ?><a href='pages/inscription.php'>Inscription</a><?php } ?>
+
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="pages/deconnexion.php">Deconnexion</a>
+            <?php } else { ?>
+                <a href="pages/connexion.php">Connexion</a>
+            <?php } ?>
         </nav>
     </header>
 

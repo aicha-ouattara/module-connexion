@@ -10,9 +10,17 @@
 <body>
     <header>
         <nav>
-            <a href="index.php">Accueil</a>
-            <a href="pages/inscription.php">Inscription</a>
-            <a href="pages/connexion.php">Connexion</a>
+            <a href='index.php'>Accueil</a>
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="pages/profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <?php
+            } else { ?><a href="pages/inscription.php">Inscription</a><?php } ?>
+
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="pages/deconnexion.php">Deconnexion</a>
+            <?php } else { ?>
+                <a href="pages/connexion.php">Connexion</a>
+            <?php } ?>
         </nav>
     </header>
     <main>

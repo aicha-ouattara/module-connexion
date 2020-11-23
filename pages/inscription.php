@@ -9,14 +9,17 @@ if (isset($_POST["submit"])) //If we press the submit button
         $login = htmlspecialchars($_POST["login"]);  //Users variable information
         $prenom = htmlspecialchars($_POST["prenom"]);
         $nom = htmlspecialchars($_POST["nom"]);
-        $password = htmlspecialchars($_POST["password"]);
-        $password2 = htmlspecialchars($_POST["password2"]);
+        $password = ($_POST["password"]);
+        $password2 = ($_POST["password2"]);
 
         $loginlenght = strlen($login); //Variable for the login lenght
 
         if ($loginlenght <= 255) {
             if ($password == $password2) {
-                $sql = " INSERT INTO utilisateurs (login, prenom, nom, password) VALUES ('" . $login . "', '" . $prenom . "', '" . $nom . "', '" . $password . "');";
+
+                $password3 = password_hash($password, PASSWORD_BCRYPT, array('cost' => 10));
+
+                $sql = " INSERT INTO utilisateurs (login, prenom, nom, password) VALUES ('" . $login . "', '" . $prenom . "', '" . $nom . "', '" . $password3 . "');";
 
                 if (!mysqli_query($bdd, $sql)) {
                     die('impossible d’ajouter cet enregistrement : ' .  mysqli_error($bdd));
@@ -52,21 +55,29 @@ mysqli_close($bdd);
 <body>
     <header>
         <nav>
-            <a href="../index.php">Accueil</a>
-            <a href="inscription.php">Inscription</a>
-            <a href="connexion.php">Connexion</a>
+            <a href='../index.php'>Accueil</a>
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <?php
+            } else { ?><a href='inscription.php'>Inscription</a><?php } ?>
+
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="deconnexion.php">Deconnexion</a>
+            <?php } else { ?>
+                <a href="connexion.php">Connexion</a>
+            <?php } ?>
         </nav>
     </header>
 
     <main>
-        
+
         <section class="flex-container">
             <!--Debut form -->
             <form method="post" action="">
-            <article class="story">
-        <h1>Inscrivez-vous !</h1>
-          <p>Decouvrez avec Totoro le studio GHIBLI ...</p>
-        </article>
+                <article class="story">
+                    <h1>Inscrivez-vous !</h1>
+                    <p>Decouvrez avec Totoro le studio GHIBLI ...</p>
+                </article>
                 <fieldset>
                     <div class="formflex">
                         <label for="login">LOGIN</label>

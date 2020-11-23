@@ -16,11 +16,19 @@ $bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion 
 <body>
     <header>
         <nav>
-            <a href="../index.php">Accueil</a>
-            <a href="inscription.php">Inscription</a>
-            <a href="connexion.php">Connexion</a>
-            <a href="profil.php">Profil</a>
+            <a href='../index.php'>Accueil</a>
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="pages/profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <?php
+            } else { ?><a href='pages/inscription.php'>Inscription</a><?php } ?>
+
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="pages/deconnexion.php">Deconnexion</a>
+            <?php } else { ?>
+                <a href="pages/connexion.php">Connexion</a>
+            <?php } ?>
         </nav>
+
         <?php
         $sql = "SELECT * FROM utilisateurs WHERE id = '" . $_SESSION["id"] . "'";  // Recovery User session ...
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
@@ -29,7 +37,7 @@ $bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion 
     </header>
     <main>
         <section>
-            <h1> Bienvenue <?php echo $userinfo["login"]; ?> ! </h1>
+            <h1> Bienvenue <?php echo $_SESSION["login"]; ?> ! </h1>
             <h2>Ci-dessous la liste de vos utilisateurs et leur données ...</h2>
             <p>*Strictement confidentiel.</p>
         </section>
@@ -71,7 +79,7 @@ $bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion 
     ?>
 
     <footer>
-     <a href="../index.php">Retour à l'accueil</a>
+        <a href="../index.php">Retour à l'accueil</a>
     </footer>
 
 </body>

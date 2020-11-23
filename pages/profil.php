@@ -2,21 +2,21 @@
 session_start(); //Session connect
 $bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion database...
 
-if (isset($_SESSION["id"])) { 
-    if (isset($_POST['newlogin']) and !empty($_POST['newlogin']) ) {
+if (isset($_SESSION["id"])) {
+    if (isset($_POST['newlogin']) and !empty($_POST['newlogin'])) {
         $newlogin = htmlspecialchars($_POST["newlogin"]);
 
         $sql = "UPDATE utilisateurs SET login = '$newlogin' WHERE id = '" . $_SESSION["id"] . "'"; //Update login from the database with the new login
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
-        header('Location: ../index.php');
+        header('Location: deconnexion.php');
     }
 
     if (isset($_POST['newprenom']) and !empty($_POST['newprenom'])) {  //Update prenom from the database whith the new prenom
         $newprenom = htmlspecialchars($_POST["newprenom"]);
 
-        $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '" . $_SESSION["id"] . "'"; 
+        $sql = "UPDATE utilisateurs SET prenom = '$newprenom' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
-        header('Location: ../index.php');
+        header('Location:deconnexion.php');
     }
 
     if (isset($_POST['newnom']) and !empty($_POST['newnom'])) { //Update nom from the database whith the new nom
@@ -24,14 +24,15 @@ if (isset($_SESSION["id"])) {
 
         $sql = "UPDATE utilisateurs SET nom = '$newnom' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
-        header('Location: ../index.php');
+        header('Location:deconnexion.php');
     }
     if (isset($_POST['newpassword']) and !empty($_POST['newpassword'])) {  //Update password from the database whith the new password
         $newpassword = htmlspecialchars($_POST["newpassword"]);
+        $newpassword2 = password_hash($newpassword, PASSWORD_BCRYPT, array('cost' => 10));
 
-        $sql = "UPDATE utilisateurs SET password = '$newpassword' WHERE id = '" . $_SESSION["id"] . "'";
+        $sql = "UPDATE utilisateurs SET password = '$newpassword2' WHERE id = '" . $_SESSION["id"] . "'";
         $result = mysqli_query($bdd, $sql) or die(mysqli_error($bdd));
-        header('Location: ../index.php');
+        header('Location: deconnexion.php');
     }
 
     $sql = "SELECT * FROM utilisateurs WHERE id = '" . $_SESSION["id"] . "'";  // Recovery User session ...
@@ -57,14 +58,23 @@ if (isset($_SESSION["id"])) {
 <body>
     <header>
         <nav>
-            <a href="../index.php">Accueil</a>
-            <a href="profil.php">Profil</a>
+            <a href='../index.php'>Accueil</a>
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <?php
+            } else { ?><a href='inscription.php'>Inscription</a><?php } ?>
+
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a href="deconnexion.php">Deconnexion</a>
+            <?php } else { ?>
+                <a href="connexion.php">Connexion</a>
+            <?php } ?>
         </nav>
     </header>
 
     <main>
         <article>
-            <h1> Bienvenue <span><?php echo $userinfo["login"]. ' ' ."!";?></span> </h1>
+            <h1> Bienvenue <span><?php echo $userinfo["login"] . ' ' . "!"; ?></span> </h1>
             <h2>Tu peux modifier ton profil ici avec les champs deja pré-remplie ...</h2>
             <section>
                 <!--Debut form -->
@@ -73,15 +83,15 @@ if (isset($_SESSION["id"])) {
                         <div class="formflex">
                             <div>
                                 <label for="login">login</label>
-                                <input type="text" name="newlogin" id="login" placeholder="votre login" value="<?php echo $userinfo["login"] ;?>">
+                                <input type="text" name="newlogin" id="login" placeholder="votre login" value="<?php echo $userinfo["login"]; ?>">
                             </div>
                             <div>
                                 <label for="prenom">Prenom</label>
-                                <input type="text" name="newprenom" id="prenom" placeholder="Votre prenom" value="<?php echo $userinfo["prenom"] ;?>">
+                                <input type="text" name="newprenom" id="prenom" placeholder="Votre prenom" value="<?php echo $userinfo["prenom"]; ?>">
                             </div>
                             <div>
                                 <label for="nom">Nom</label>
-                                <input type="text" name="newnom" id="nom" placeholder="Votre nom" value="<?php echo $userinfo["nom"] ;?>">
+                                <input type="text" name="newnom" id="nom" placeholder="Votre nom" value="<?php echo $userinfo["nom"]; ?>">
                             </div>
                             <div>
                                 <label for="password">Mot de passe</label>
