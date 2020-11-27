@@ -58,7 +58,6 @@ if (isset($_SESSION["id"])) {
 <body>
     <header>
         <nav>
-            <a href='../index.php'>Accueil</a>
             <?php if (isset($_SESSION['id'])) { ?>
                 <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
             <?php
@@ -69,6 +68,11 @@ if (isset($_SESSION["id"])) {
             <?php } else { ?>
                 <a href="connexion.php">Connexion</a>
             <?php } ?>
+            <?php if ($userinfo["login"] == "admin") {
+                echo "<a href='admin.php'>Admin</a>";
+            }
+                ?>
+
         </nav>
     </header>
 

@@ -16,8 +16,8 @@ $bdd = mysqli_connect("localhost", "root", "", "moduleconnexion"); // Connexion 
 <body>
     <header>
         <nav>
-            <a href='../index.php'>Accueil</a>
             <?php if (isset($_SESSION['id'])) { ?>
+                <a href="admin.php?id=" <?php $_SESSION['id'] ?>>Admin</a>
                 <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
             <?php
             } else { ?><a href="inscription.php">Inscription</a><?php } ?>
